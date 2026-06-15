@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Memory Systems Research</title>
+  <meta name="description" content="A visual research dashboard for AI agent memory systems, taxonomy, multi-agent memory topologies, and open-source project references." />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;520;650;760&family=JetBrains+Mono:wght@500;700&display=swap");
+
+    :root {
+      color-scheme: dark;
+      --ink: #e7edf3;
+      --muted: #8f9aaa;
+      --quiet: #5f6f82;
+      --paper: #071014;
+      --panel: #0c171d;
+      --panel-2: #101d24;
+      --line: #23343e;
+      --cyan: #2dd4bf;
+      --blue: #60a5fa;
+      --amber: #f4c35f;
+      --green: #86efac;
+      --rose: #fb7185;
+      --violet: #a78bfa;
+      --shadow: 0 24px 80px rgba(0, 0, 0, .34);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(180deg, rgba(45, 212, 191, .08), transparent 280px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.028) 0 1px, transparent 1px 96px),
+        var(--paper);
+      color: var(--ink);
+      font-family: Manrope, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      background: rgba(7, 16, 20, .88);
+      backdrop-filter: blur(18px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(45, 212, 191, .6);
+      background:
+        linear-gradient(135deg, rgba(45,212,191,.28), transparent),
+        linear-gradient(315deg, rgba(96,165,250,.2), transparent);
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      font-family: "JetBrains Mono", monospace;
+      color: var(--cyan);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+      background: rgba(255,255,255,.06);
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      align-items: center;
+      padding: 72px 0 54px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(320px, .96fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--cyan);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Instrument Serif", serif;
+      font-size: clamp(48px, 8vw, 104px);
+      font-weight: 400;
+      line-height: .88;
+      letter-spacing: 0;
+      max-width: 780px;
+    }
+
+    .lead {
+      max-width: 700px;
+      margin: 28px 0 0;
+      color: #b8c3cf;
+      font-size: clamp(16px, 2vw, 20px);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      font-weight: 650;
+      font-size: 14px;
+    }
+
+    .button.primary {
+      color: #051014;
+      background: var(--cyan);
+      border-color: var(--cyan);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(45, 212, 191, .8);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      min-height: 126px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.025));
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric strong {
+      display: block;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 32px;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      padding: 70px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: "Instrument Serif", serif;
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .section-note {
+      max-width: 520px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .taxonomy-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(168px, 1fr));
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .taxon {
+      min-height: 260px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 14px;
+      position: relative;
+    }
+
+    .taxon::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 3px;
+      border-radius: 2px;
+      background: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .taxon h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .taxon p {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 0 0 12px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      height: 24px;
+      padding: 0 8px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-family: "JetBrains Mono", monospace;
+      white-space: nowrap;
+    }
+
+    .topology {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(320px, 1.05fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .map {
+      min-height: 520px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.045), transparent),
+        var(--panel);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .map::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 86%);
+    }
+
+    .node {
+      position: absolute;
+      width: 128px;
+      min-height: 72px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 8px;
+      background: rgba(7, 16, 20, .86);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 650;
+      box-shadow: 0 16px 42px rgba(0,0,0,.28);
+    }
+
+    .node.main {
+      width: 152px;
+      min-height: 92px;
+      color: #051014;
+      background: var(--cyan);
+      border-color: var(--cyan);
+      font-size: 14px;
+    }
+
+    .edge {
+      position: absolute;
+      height: 1px;
+      transform-origin: 0 0;
+      background: linear-gradient(90deg, rgba(45,212,191,.85), rgba(96,165,250,.18));
+    }
+
+    .pattern-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .pattern {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel-2);
+      padding: 15px;
+    }
+
+    .pattern h3 {
+      margin: 0 0 7px;
+      font-size: 15px;
+    }
+
+    .pattern p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .project-tools {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      border-radius: 999px;
+      min-height: 34px;
+      padding: 0 12px;
+      font: 650 13px Manrope, sans-serif;
+      cursor: pointer;
+    }
+
+    .filter.active {
+      color: #041015;
+      background: var(--amber);
+      border-color: var(--amber);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .project {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 15px;
+      min-height: 218px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .project h3 {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.25;
+    }
+
+    .stars {
+      color: var(--amber);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .project p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .project .meta {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .decision {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .decision-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: var(--panel);
+    }
+
+    .decision-item h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .decision-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--quiet);
+      font-size: 13px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .topology,
+      .decision {
+        grid-template-columns: 1fr;
+      }
+
+      .projects {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .topbar-inner {
+        align-items: start;
+        padding: 12px 0;
+        flex-direction: column;
+      }
+
+      .metrics,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 44px;
+      }
+
+      .map {
+        min-height: 460px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#">
+        <span class="brand-mark">M</span>
+        <span>AI Memory Atlas</span>
+      </a>
+      <nav class="nav" aria-label="Research sections">
+        <a href="#taxonomy">Taxonomy</a>
+        <a href="#multi-agent">Multi-agent</a>
+        <a href="#projects">Projects</a>
+        <a href="#decision">Design stance</a>
+        <a href="memory-systems-report.md">Report</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="eyebrow">GitHub research dashboard</div>
+          <h1>Memory systems for agents that need to remember responsibly.</h1>
+          <p class="lead">A compact map of AI memory categories, multi-agent memory topologies, and open-source systems worth studying before building your own memory layer.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#multi-agent">Study multi-agent memory</a>
+            <a class="button" href="memory-project-index.csv">Open project index</a>
+            <a class="button" href="memory-taxonomy.md">Read taxonomy</a>
+          </div>
+        </div>
+        <div class="metrics" aria-label="Research metrics">
+          <div class="metric"><strong>65</strong><span>indexed open-source repositories</span></div>
+          <div class="metric"><strong>20</strong><span>deep-read projects in the report</span></div>
+          <div class="metric"><strong>7</strong><span>memory content categories</span></div>
+          <div class="metric"><strong>7</strong><span>multi-agent memory topologies</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="taxonomy">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Memory Taxonomy</h2>
+          <p class="section-note">The useful split is not just vector vs graph. A real system needs to separate what is remembered, how it is stored, and who is allowed to reuse it.</p>
+        </div>
+        <div class="taxonomy-grid" id="taxonomyGrid"></div>
+      </div>
+    </section>
+
+    <section id="multi-agent">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Multi-Agent Memory</h2>
+          <p class="section-note">Multi-agent memory fails when every agent writes to the same pile. The safer design is private scratch memory, promoted shared facts, and clear deletion rules.</p>
+        </div>
+        <div class="topology">
+          <div class="map" aria-label="Recommended multi-agent memory topology">
+            <div class="edge" style="left: 24%; top: 28%; width: 195px; transform: rotate(24deg);"></div>
+            <div class="edge" style="left: 25%; top: 56%; width: 210px; transform: rotate(-18deg);"></div>
+            <div class="edge" style="left: 58%; top: 33%; width: 165px; transform: rotate(102deg);"></div>
+            <div class="edge" style="left: 43%; top: 66%; width: 230px; transform: rotate(-32deg);"></div>
+            <div class="node main" style="left: calc(50% - 76px); top: 39%;">Shared verified memory</div>
+            <div class="node" style="left: 7%; top: 14%;">Planner private memory</div>
+            <div class="node" style="left: 7%; top: 62%;">Coder run trace</div>
+            <div class="node" style="right: 7%; top: 14%;">Reviewer critique memory</div>
+            <div class="node" style="right: 7%; bottom: 13%;">User approved profile</div>
+            <div class="node" style="left: calc(50% - 64px); bottom: 8%;">Memory Inbox</div>
+          </div>
+          <div class="pattern-list" id="patternList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Project Map</h2>
+          <p class="section-note">A filtered view of the strongest references. Use it as a reading order, not as a final ranking.</p>
+        </div>
+        <div class="project-tools" id="filters"></div>
+        <div class="projects" id="projectsGrid"></div>
+      </div>
+    </section>
+
+    <section id="decision">
+      <div class="shell">
+        <div class="section-head">
+          <h2>Design Stance</h2>
+          <p class="section-note">The most useful first system is boring in the right places: inspectable writes, scoped reads, and simple retrieval before graph complexity.</p>
+        </div>
+        <div class="decision">
+          <div class="decision-item">
+            <h3>Start with Memory Inbox</h3>
+            <p>Agents propose candidate memories. Users or policies approve promotion into durable memory.</p>
+          </div>
+          <div class="decision-item">
+            <h3>Separate scopes</h3>
+            <p>User, project, agent run, and shared team memories should not live in one undifferentiated bucket.</p>
+          </div>
+          <div class="decision-item">
+            <h3>Keep deletion real</h3>
+            <p>Every derived index should be rebuildable from approved source memories so delete/export stay credible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">Snapshot: 2026-06-15 · Research repository by AuGa7 · Built as a static GitHub Pages dashboard.</div>
+  </footer>
+
+  <script>
+    const taxonomies = [
+      { name: "Conversation", accent: "#60a5fa", summary: "Turns, summaries, and session continuity.", tags: ["sessions", "summaries", "short-term"] },
+      { name: "User Profile", accent: "#2dd4bf", summary: "Stable preferences, goals, constraints, and personalization state.", tags: ["profile", "preferences", "identity"] },
+      { name: "Episodic", accent: "#f4c35f", summary: "Time-bound events, agent runs, traces, and outcomes.", tags: ["runs", "events", "reflection"] },
+      { name: "Semantic", accent: "#86efac", summary: "Durable facts and concepts extracted from interactions or documents.", tags: ["facts", "concepts", "retrieval"] },
+      { name: "Graph", accent: "#a78bfa", summary: "Entities, relations, provenance, and temporal validity.", tags: ["entities", "relations", "time"] },
+      { name: "Procedural", accent: "#fb7185", summary: "Reusable workflows, skills, policies, and corrections.", tags: ["skills", "policies", "habits"] },
+      { name: "Project", accent: "#f97316", summary: "Repo decisions, architecture notes, constraints, and local rules.", tags: ["AI coding", "repo facts", "constraints"] }
+    ];
+
+    const patterns = [
+      { name: "Private + shared facts", text: "Best default: agents keep scratch memory private and promote verified facts into shared memory." },
+      { name: "Role-scoped memory", text: "Planner, coder, researcher, and reviewer keep different long-term traces and retrieval policies." },
+      { name: "Shared blackboard", text: "Useful for temporary team state, risky as durable memory because ownership gets blurry." },
+      { name: "Hierarchical memory", text: "Manager stores task-level decisions while subagents keep local run traces." },
+      { name: "Federated personal memory", text: "A user-owned local memory service serves multiple IDE, chat, and agent clients." },
+      { name: "Graph-backed team memory", text: "Good for changing relationships, provenance, and temporal facts after simpler memory works." },
+      { name: "Procedural skill memory", text: "Stores reusable corrections and tool sequences; promote only after review." }
+    ];
+
+    const projects = [
+      { name: "mem0", repo: "mem0ai/mem0", category: "Memory layer", stars: "58.6k", tone: "Personalized long-term memory with multi-level state and multi-signal retrieval.", url: "https://github.com/mem0ai/mem0" },
+      { name: "Graphiti", repo: "getzep/graphiti", category: "Graph memory", stars: "27.4k", tone: "Temporal context graphs for facts that change over time.", url: "https://github.com/getzep/graphiti" },
+      { name: "Supermemory", repo: "supermemoryai/supermemory", category: "Memory layer", stars: "27.0k", tone: "Memory/context engine with user profiles, forgetting, and hybrid search.", url: "https://github.com/supermemoryai/supermemory" },
+      { name: "Letta", repo: "letta-ai/letta", category: "Stateful agents", stars: "23.3k", tone: "Agent platform with explicit memory blocks and SDK/API access.", url: "https://github.com/letta-ai/letta" },
+      { name: "Cognee", repo: "topoteretes/cognee", category: "Graph memory", stars: "17.8k", tone: "Self-hosted knowledge graph memory with remember, recall, forget, improve.", url: "https://github.com/topoteretes/cognee" },
+      { name: "MemOS", repo: "MemTensor/MemOS", category: "Memory OS", stars: "9.9k", tone: "Memory OS framing for persistent memory, hybrid retrieval, and cross-task reuse.", url: "https://github.com/MemTensor/MemOS" },
+      { name: "Honcho", repo: "plastic-labs/honcho", category: "Stateful agents", stars: "5.2k", tone: "Lightweight memory library for building stateful agents.", url: "https://github.com/plastic-labs/honcho" },
+      { name: "Memobase", repo: "memodb-io/memobase", category: "User profile", stars: "2.8k", tone: "User profile-based long-term memory for chatbot applications.", url: "https://github.com/memodb-io/memobase" },
+      { name: "LangMem", repo: "langchain-ai/langmem", category: "Agent framework", stars: "1.5k", tone: "Core memory API, hot-path memory tools, and background memory manager.", url: "https://github.com/langchain-ai/langmem" },
+      { name: "CrewAI", repo: "crewAIInc/crewAI", category: "Multi-agent", stars: "53.6k", tone: "Role-based multi-agent orchestration where memory is part of agent configuration.", url: "https://github.com/crewAIInc/crewAI" },
+      { name: "OpenAI Agents SDK", repo: "openai/openai-agents-python", category: "Agent framework", stars: "27.2k", tone: "Sessions manage conversation history across agent runs; useful boundary reference.", url: "https://github.com/openai/openai-agents-python" },
+      { name: "Eliza", repo: "elizaOS/eliza", category: "Multi-agent", stars: "18.6k", tone: "Agent runtime with message, memory, and state primitives.", url: "https://github.com/elizaOS/eliza" }
+    ];
+
+    const taxonomyGrid = document.querySelector("#taxonomyGrid");
+    taxonomyGrid.innerHTML = taxonomies.map(item => `
+      <article class="taxon" style="--accent:${item.accent}">
+        <h3>${item.name}</h3>
+        <p>${item.summary}</p>
+        <div class="tag-list">${item.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}</div>
+      </article>
+    `).join("");
+
+    const patternList = document.querySelector("#patternList");
+    patternList.innerHTML = patterns.map(item => `
+      <article class="pattern">
+        <h3>${item.name}</h3>
+        <p>${item.text}</p>
+      </article>
+    `).join("");
+
+    const filters = ["All", ...Array.from(new Set(projects.map(project => project.category)))];
+    const filtersEl = document.querySelector("#filters");
+    const grid = document.querySelector("#projectsGrid");
+
+    function renderProjects(category = "All") {
+      document.querySelectorAll(".filter").forEach(button => {
+        button.classList.toggle("active", button.dataset.category === category);
+      });
+      const visible = category === "All" ? projects : projects.filter(project => project.category === category);
+      grid.innerHTML = visible.map(project => `
+        <article class="project">
+          <div class="project-head">
+            <h3><a href="${project.url}">${project.name}</a></h3>
+            <span class="stars">${project.stars}</span>
+          </div>
+          <p>${project.tone}</p>
+          <div class="meta">
+            <span class="tag">${project.category}</span>
+            <span class="tag">${project.repo}</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    filtersEl.innerHTML = filters.map(category => `<button class="filter" data-category="${category}" type="button">${category}</button>`).join("");
+    filtersEl.addEventListener("click", event => {
+      const button = event.target.closest("button[data-category]");
+      if (button) renderProjects(button.dataset.category);
+    });
+    renderProjects();
+  </script>
+</body>
+</html>
