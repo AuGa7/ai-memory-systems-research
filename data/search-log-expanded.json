@@ -1,0 +1,336 @@
+[
+  {
+    "query": "topic:llm-memory",
+    "count": 15,
+    "repos": [
+      "alibaba/zvec",
+      "Mirix-AI/MIRIX",
+      "memodb-io/memobase",
+      "IAAR-Shanghai/Awesome-AI-Memory",
+      "moorcheh-ai/memanto",
+      "NirDiamant/Agent_Memory_Techniques",
+      "memvid/claude-brain",
+      "TeleAI-UAGI/Awesome-Agent-Memory",
+      "LycheeMem/LycheeMem",
+      "mnemon-dev/mnemon",
+      "divagr18/memlayer",
+      "sachitrafa/YourMemory",
+      "AutoArk/TinyEngram",
+      "qualixar/superlocalmemory",
+      "alibaizhanov/mengram"
+    ]
+  },
+  {
+    "query": "topic:ai-memory",
+    "count": 15,
+    "repos": [
+      "thedotmack/claude-mem",
+      "supermemoryai/supermemory",
+      "topoteretes/cognee",
+      "vectorize-io/hindsight",
+      "MemoriLabs/Memori",
+      "julep-ai/julep",
+      "plastic-labs/honcho",
+      "CaviraOSS/OpenMemory",
+      "memgraph/memgraph",
+      "neomjs/neo",
+      "memodb-io/memobase",
+      "memohai/Memoh",
+      "RedPlanetHQ/core",
+      "Dataojitori/nocturne_memory",
+      "activeloopai/hivemind"
+    ]
+  },
+  {
+    "query": "topic:agent-memory",
+    "count": 15,
+    "repos": [
+      "666ghj/MiroFish",
+      "pingcap/tidb",
+      "supermemoryai/supermemory",
+      "dolthub/dolt",
+      "topoteretes/cognee",
+      "MemoriLabs/Memori",
+      "NevaMind-AI/memU",
+      "EverMind-AI/EverOS",
+      "plastic-labs/honcho",
+      "neomjs/neo",
+      "Bitterbot-AI/bitterbot-desktop",
+      "kayba-ai/agentic-context-engine",
+      "trustgraph-ai/trustgraph",
+      "zilliztech/memsearch",
+      "ai-boost/awesome-harness-engineering"
+    ]
+  },
+  {
+    "query": "topic:long-term-memory",
+    "count": 15,
+    "repos": [
+      "thedotmack/claude-mem",
+      "mem0ai/mem0",
+      "MemTensor/MemOS",
+      "EverMind-AI/EverOS",
+      "TencentCloud/TencentDB-Agent-Memory",
+      "plastic-labs/honcho",
+      "CaviraOSS/OpenMemory",
+      "pashpashpash/vault-ai",
+      "neomjs/neo",
+      "memodb-io/memobase",
+      "Xnhyacinth/Awesome-LLM-Long-Context-Modeling",
+      "zilliztech/memsearch",
+      "lucidrains/titans-pytorch",
+      "BAI-LAB/MemoryOS",
+      "Dataojitori/nocturne_memory"
+    ]
+  },
+  {
+    "query": "\"AI memory\" agent in:description,readme",
+    "count": 15,
+    "repos": [
+      "MemPalace/mempalace",
+      "GitHubDaily/GitHubDaily",
+      "Imbad0202/academic-research-skills",
+      "supermemoryai/supermemory",
+      "rohitg00/agentmemory",
+      "NirDiamant/agents-towards-production",
+      "screenpipe/screenpipe",
+      "topoteretes/cognee",
+      "memvid/memvid",
+      "steven2358/awesome-generative-ai",
+      "StarTrail-org/LEANN",
+      "KalyanKS-NLP/llm-engineer-toolkit",
+      "MemTensor/MemOS",
+      "digoal/blog",
+      "EverMind-AI/EverOS"
+    ]
+  },
+  {
+    "query": "\"agent memory\" in:name,description,readme",
+    "count": 14,
+    "repos": [
+      "avelino/awesome-go",
+      "thedotmack/claude-mem",
+      "JuliusBrussee/caveman",
+      "pewdiepie-archdaemon/odysseus",
+      "microsoft/ai-agents-for-beginners",
+      "ruvnet/ruflo",
+      "rust-unofficial/awesome-rust",
+      "VoltAgent/awesome-openclaw-skills",
+      "HKUDS/CLI-Anything",
+      "moeru-ai/airi",
+      "sickn33/antigravity-awesome-skills",
+      "rohitg00/ai-engineering-from-scratch",
+      "e2b-dev/awesome-ai-agents",
+      "NirDiamant/RAG_Techniques"
+    ]
+  },
+  {
+    "query": "\"llm memory\" in:name,description,readme",
+    "count": 15,
+    "repos": [
+      "redis/redis",
+      "crewAIInc/crewAI",
+      "MemTensor/MemOS",
+      "kyrolabs/awesome-langchain",
+      "Jackywine/Bella",
+      "agiresearch/AIOS",
+      "filipecalegario/awesome-generative-ai",
+      "knightnemo/Awesome-World-Models",
+      "spiceai/spiceai",
+      "HuaYaoAI/FinGenius",
+      "rafska/awesome-local-llm",
+      "Shichun-Liu/Agent-Memory-Paper-List",
+      "Tongji-KGLLM/RAG-Survey",
+      "Xnhyacinth/Awesome-LLM-Long-Context-Modeling",
+      "ai-boost/awesome-harness-engineering"
+    ]
+  },
+  {
+    "query": "\"long-term memory\" \"LLM\" in:readme",
+    "count": 14,
+    "repos": [
+      "redis/redis",
+      "666ghj/MiroFish",
+      "mem0ai/mem0",
+      "charlax/professional-programming",
+      "VoltAgent/awesome-openclaw-skills",
+      "zhayujie/CowAgent",
+      "HKUDS/nanobot",
+      "deepseek-ai/awesome-deepseek-integration",
+      "e2b-dev/awesome-ai-agents",
+      "volcengine/OpenViking",
+      "VoltAgent/awesome-agent-skills",
+      "enescingoz/awesome-n8n-templates",
+      "rohitg00/agentmemory",
+      "NirDiamant/GenAI_Agents"
+    ]
+  },
+  {
+    "query": "\"memory layer\" \"AI agents\" in:readme",
+    "count": 15,
+    "repos": [
+      "vinta/awesome-python",
+      "punkpeye/awesome-mcp-servers",
+      "mem0ai/mem0",
+      "rust-unofficial/awesome-rust",
+      "deepseek-ai/awesome-deepseek-integration",
+      "garrytan/gbrain",
+      "EthicalML/awesome-production-machine-learning",
+      "memvid/memvid",
+      "AndyMik90/Aperant",
+      "NevaMind-AI/memU",
+      "KalyanKS-NLP/llm-engineer-toolkit",
+      "MemTensor/MemOS",
+      "WangRongsheng/awesome-LLM-resources",
+      "tauri-apps/awesome-tauri",
+      "yizhiyanhua-ai/fireworks-tech-graph"
+    ]
+  },
+  {
+    "query": "\"persistent memory\" \"AI agent\" in:readme",
+    "count": 15,
+    "repos": [
+      "NousResearch/hermes-agent",
+      "punkpeye/awesome-mcp-servers",
+      "thedotmack/claude-mem",
+      "ruvnet/RuView",
+      "josephmisiti/awesome-machine-learning",
+      "ruvnet/ruflo",
+      "rust-unofficial/awesome-rust",
+      "VoltAgent/awesome-openclaw-skills",
+      "patchy631/ai-engineering-hub",
+      "langchain-ai/langgraph",
+      "tinyhumansai/openhuman",
+      "dragonflydb/dragonfly",
+      "e2b-dev/awesome-ai-agents",
+      "supermemoryai/supermemory",
+      "VoltAgent/awesome-agent-skills"
+    ]
+  },
+  {
+    "query": "\"RAG memory\" \"LLM\" in:readme",
+    "count": 15,
+    "repos": [
+      "punkpeye/awesome-mcp-servers",
+      "ruvnet/ruflo",
+      "moeru-ai/airi",
+      "vanna-ai/vanna",
+      "adongwanai/AgentGuide",
+      "wong2/awesome-mcp-servers",
+      "Meirtz/Awesome-Context-Engineering",
+      "openakita/openakita",
+      "Natively-AI-assistant/natively-cluely-ai-assistant",
+      "tmgthb/Autonomous-Agents",
+      "SamurAIGPT/awesome-openclaw",
+      "datawhalechina/handy-multi-agent",
+      "TalEliyahu/Awesome-AI-Security",
+      "oxbshw/LLM-Agents-Ecosystem-Handbook",
+      "supabase-community/chatgpt-your-files"
+    ]
+  },
+  {
+    "query": "\"conversation memory\" \"LLM\" in:readme",
+    "count": 15,
+    "repos": [
+      "micro/go-micro",
+      "MemoriLabs/Memori",
+      "NevaMind-AI/memU",
+      "spring-projects/spring-ai",
+      "2FastLabs/agent-squad",
+      "0xPlaygrounds/rig",
+      "Tencent/puerts",
+      "tensorchord/Awesome-LLMOps",
+      "shroominic/codeinterpreter-api",
+      "Atmosphere/atmosphere",
+      "dromara/liteflow",
+      "GiovanniPasq/agentic-rag-for-dummies",
+      "DSXiangLi/DecryptPrompt",
+      "walkinglabs/awesome-harness-engineering",
+      "agentscope-ai/ReMe"
+    ]
+  },
+  {
+    "query": "\"episodic memory\" \"LLM\" in:readme",
+    "count": 15,
+    "repos": [
+      "vxcontrol/pentagi",
+      "yizhiyanhua-ai/fireworks-tech-graph",
+      "nibzard/awesome-agentic-patterns",
+      "xialeiliu/Awesome-Incremental-Learning",
+      "CaviraOSS/OpenMemory",
+      "oracle-devrel/oracle-ai-developer-hub",
+      "FareedKhan-dev/all-agentic-architectures",
+      "Mirix-AI/MIRIX",
+      "DSXiangLi/DecryptPrompt",
+      "Meirtz/Awesome-Context-Engineering",
+      "MemMachine/MemMachine",
+      "huawei-noah/HEBO",
+      "MARKTECHPOST-AI-MEDIA-INC/AI-Agents-Projects-Tutorials",
+      "rohitg00/pro-workflow",
+      "FoundationAgents/awesome-foundation-agents"
+    ]
+  },
+  {
+    "query": "\"semantic memory\" \"LLM\" in:readme",
+    "count": 15,
+    "repos": [
+      "VoltAgent/awesome-openclaw-skills",
+      "mastra-ai/mastra",
+      "vxcontrol/pentagi",
+      "HKUDS/ClawWork",
+      "yizhiyanhua-ai/fireworks-tech-graph",
+      "EverMind-AI/EverOS",
+      "adongwanai/AgentGuide",
+      "ruvnet/RuVector",
+      "oracle-devrel/oracle-ai-developer-hub",
+      "wong2/awesome-mcp-servers",
+      "0xNyk/awesome-hermes-agent",
+      "SciSharp/LLamaSharp",
+      "Mirix-AI/MIRIX",
+      "Meirtz/Awesome-Context-Engineering",
+      "agentscope-ai/ReMe"
+    ]
+  },
+  {
+    "query": "\"graph memory\" \"AI\" in:readme",
+    "count": 15,
+    "repos": [
+      "punkpeye/awesome-mcp-servers",
+      "microsoft/graphrag",
+      "rohitg00/agentmemory",
+      "MemTensor/MemOS",
+      "nl8590687/ASRT_SpeechRecognition",
+      "ai-boost/awesome-prompts",
+      "MervinPraison/PraisonAI",
+      "zhaochenyang20/Awesome-ML-SYS-Tutorial",
+      "xialeiliu/Awesome-Incremental-Learning",
+      "ruvnet/RuVector",
+      "FareedKhan-dev/all-agentic-architectures",
+      "jonyzhang2023/awesome-embodied-vla-va-vln",
+      "nikmcfly/MiroFish-Offline",
+      "trustgraph-ai/trustgraph",
+      "Shichun-Liu/Agent-Memory-Paper-List"
+    ]
+  },
+  {
+    "query": "\"personal AI memory\" in:readme",
+    "count": 15,
+    "repos": [
+      "rohitg00/agentmemory",
+      "StarTrail-org/LEANN",
+      "ruvnet/RuVector",
+      "Einsia/OpenChronicle",
+      "marswangyang/personal-ai-memory",
+      "clawcolab/clawbrain",
+      "artemMprokhorov/hippograph-pro",
+      "ever-works/awesome-vector-databases",
+      "anbang278/echo-notes",
+      "Kwaai-AI-Lab/KwaaiNet",
+      "evepupil/CloudMind",
+      "vektori-ai/vektori-extension",
+      "josortmel/EcoDB",
+      "NiclasOlofsson/mode-manager-mcp",
+      "danzhewuju/PAM-OS"
+    ]
+  }
+]
